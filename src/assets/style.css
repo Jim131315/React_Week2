@@ -1,0 +1,35 @@
+html,
+body {
+  height: 100%;
+  text-align: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+.m0-auto {
+    margin: 0 auto;
+  }
+
+.text-left {
+    text-align: left;
+    display: block
+}
+
+.inputText {
+    width: 300px;
+    height: 40px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.btnWidth {
+  display: flex;
+}
