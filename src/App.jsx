@@ -23,6 +23,16 @@ function App() {
     }) 
   }
 
+  // 發送取得產品資料的請求
+const getProducts = async () => {
+  try {
+    const productsRes = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/admin/products`);
+    setProductList(productsRes.data.products);
+  } catch (error) {
+    alert('取得產品失敗')
+  }
+}
+
   // 處理登入請求的函式
 const handleLogin = async (e) => {
   e.preventDefault();
@@ -37,10 +47,8 @@ const handleLogin = async (e) => {
     // 設定 token 到 cookie 和 axios 預設 headers
     axios.defaults.headers.common['Authorization'] = token;
 
-    // 發送取得產品資料的請求
-    const productsRes = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/admin/products`);
-    setProductList(productsRes.data.products);
-
+    getProducts();
+    
     // 登入成功後更新認證狀態
     setIsAuth(true);
   } catch (error) {
