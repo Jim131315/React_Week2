@@ -49,18 +49,21 @@ const handleLogin = async (e) => {
 }
 
 // 檢查使用者是否已經登入的函式
-const checkUserLoggin = () => {
-  axios.post(`${BASE_URL}/api/user/check`)
-  .then((res) => {
+const checkUserLogin = async () => {
+  try {
+    await axios.post(`${BASE_URL}/api/user/check`)
     alert('已經登入')
-  })
-  .catch((err) => console.error(err))
-}
+  } catch (error) {
+    console.error(error)
+    
+  }
+};
+
 
   return (
     <>
     {isAuth ? (<div className="container mt-3">
-                  <button onClick={checkUserLoggin} type="button" className="btn btn-success mb-5 btnWidth">檢查使用者是否登入</button>
+                  <button onClick={checkUserLogin} type="button" className="btn btn-success mb-5 btnWidth">檢查使用者是否登入</button>
                     <div className="row">
                         <div className="col-6">
                             <h2>產品列表</h2>
